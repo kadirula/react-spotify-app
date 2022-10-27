@@ -1,0 +1,38 @@
+.app{
+    
+    min-height: 100vh;
+    background-image: url(./assets/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2% 5%;
+    @media (max-width:600px){
+        padding: 2% 0;
+    }
+}
+
+.container{
+    @media (min-width:1400px){
+        max-width: 1700px;
+    }
+    @media (max-width:600px){
+        max-width: 100%;
+    }
+}
+
+.main{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 100vh;
+    
+
+    &__content{
+        width: 80%;
+        background: #121111cf;
+        padding: 30px 40px;
+        border-radius: 30px;
+        @media (max-width: 600px) {
+            width: 90%; 
+        }
+    }
+}
