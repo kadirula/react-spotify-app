@@ -19,8 +19,8 @@ const Sidebar = () => {
       <div className="sidebar__box">
         <span>Menü</span>
         <div className="sidebar__menu">
-          <NavLink to='/' className='sidebar__menu-item'> <FaHome /><span>Anasayfa</span></NavLink>
-          <NavLink to='/search' className='sidebar__menu-item'> <BiSearch /><span>Ara</span></NavLink>
+          <NavLink end to='/' className='sidebar__menu-item'> <FaHome /><span>Anasayfa</span></NavLink>
+          <NavLink end to='/search' className='sidebar__menu-item'> <BiSearch /><span>Ara</span></NavLink>
           <div
             className='sidebar__menu-item'
             onClick={() => {

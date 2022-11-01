@@ -25,11 +25,13 @@ const ProtectedRoute = ({ children }) => {
 
     }, [])
 
-    if (token == null) {
-        return (
-            <Navigate to='/login' />
-        )
-    }
+    console.log(token);
+
+    // if (token == null) {
+    //     return (
+    //         <Navigate to='/login' />
+    //     )
+    // }
     return children;
 }
 

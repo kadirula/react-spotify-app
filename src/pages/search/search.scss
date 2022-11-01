@@ -1,0 +1,33 @@
+.search{
+    max-width: 500px;
+    margin: 0 auto;
+    position: sticky;
+    top: 22px;
+
+    .search__item{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 10px 15px;
+        border-radius: 32px;
+        border: 2px solid #1ed760;
+    }
+    input{
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        color: #fff;
+        &:focus{
+            outline: none;
+        }
+    }
+
+    button{
+        background-color: transparent;
+        color: #1ed760;
+        border: none;
+        font-size: 20px;
+    }
+}

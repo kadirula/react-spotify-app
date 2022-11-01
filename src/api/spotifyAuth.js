@@ -47,6 +47,8 @@ export const getAuth = async () => {
             qs.stringify(data),
             headers
         );
+        localStorage.removeItem("access-token")
+        localStorage.setItem("access-token",response.data.access_token)
         return response.data.access_token;
     } catch (error) {
         console.log(error);
