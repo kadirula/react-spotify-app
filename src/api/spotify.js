@@ -26,7 +26,6 @@ export const fetchFromURL = async (url) => {
             status: false,
             err: err.response
         }
-        console.log(err);
     }
 
 
