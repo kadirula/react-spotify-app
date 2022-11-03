@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout, ProtectedRoute } from "./components";
-import { Home, ArtistDetail, Login, NotFound, Search } from "./pages";
+import { Home, AlbumDetail, ArtistDetail, Login, NotFound, Search } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: '/search',
         element: <Search />
+      },
+      {
+        path: '/album/:id',
+        element: <AlbumDetail />
       },
       {
         path: '/artist/:id',

@@ -1,0 +1,43 @@
+.album-detail {
+    .banner {
+        height: 300px;
+        background: rgba(2, 0, 36, 0.483);
+        padding: 25px 40px;
+        display: flex;
+        align-items: center;
+
+        .image {
+            max-width: 250px;
+        }
+        .info {
+            padding: 0 25px;
+        }
+        .label {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgb(169, 168, 168);
+        }
+        .title {
+            font-size: 30px;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .date {
+            color: rgb(169, 168, 168);
+            font-size: 13px;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .subtitle {
+            font-size: 17px;
+            color: #1ed760;
+            text-decoration: none;
+            transition: all 0.4s;
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}

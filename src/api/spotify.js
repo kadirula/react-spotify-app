@@ -22,8 +22,10 @@ export const fetchFromURL = async (url) => {
         }
 
     } catch (err) {
+        console.log(err);
         return {
             status: false,
+            statusCode: err.response.status,
             err: err.response
         }
     }

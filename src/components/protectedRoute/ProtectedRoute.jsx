@@ -6,15 +6,14 @@ const ProtectedRoute = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem("access-token"));
 
+    console.log(token);
+
     useEffect(() => {
         const hash = window.location.hash;
         window.location.hash = "";
 
-        if (token == null && hash) {
+        if (!token) {
             getAuth().then(accessToken => {
-
-                console.log(accessToken);
-
                 setToken(accessToken);
                 window.localStorage.setItem("access-token", accessToken);
             });
@@ -25,13 +24,11 @@ const ProtectedRoute = ({ children }) => {
 
     }, [])
 
-    console.log(token);
-
-    // if (token == null) {
-    //     return (
-    //         <Navigate to='/login' />
-    //     )
-    // }
+    if (!token) {
+        return (
+             <Navigate to='/login' />
+        )
+    }
     return children;
 }
 

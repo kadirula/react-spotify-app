@@ -29,8 +29,9 @@
     &__content{
         width: 80%;
         background: #121111cf;
-        padding: 30px 40px;
+        // padding: 30px 40px;
         border-radius: 30px;
+        overflow: hidden;
         @media (max-width: 600px) {
             width: 90%; 
         }

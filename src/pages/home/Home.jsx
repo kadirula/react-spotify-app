@@ -1,37 +1,33 @@
 import './home.scss'
-import { BiLinkAlt } from '../../utils/icon';
-import { Link } from 'react-router-dom';
-import MusicImage from '../../assets/music.jpg';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { setArtistList, setArtistAlbums } from '../../redux/reducers/artistReducer'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchFromURL } from '../../api/spotify';
 import { useState } from 'react';
-
-
-/*
-burada yapmaya çalıştığımız static olarak sanatçıların id lerini tutuyoruz.
-Daha sonra sanatçıları api den çekip redux ile artistList içerisinde gelen verileri tutuyoruz.
-Api den çektiğimiz sanatçıların albümlerini yine api den çekip redux ile artistAlbums içerisine almaya çalışacağız 
-
-*/
+import { ArtistAlbums } from '../../components/';
 
 const Home = () => {
-  const artistIds = '1UV3ii5FWWXF3jkZVeA2bb,0rHmlPHC63IGBTrtQEdDw6'
+  const artistIds = '1UV3ii5FWWXF3jkZVeA2bb,0rHmlPHC63IGBTrtQEdDw6,4q3ewBCX7sLwd24euuV69X,64M6ah0SkkRsnPGtGiRAbb'
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const { artistList } = useSelector(state => state.artist)
 
-
-  const { artistList, artistAlbums } = useSelector(state => state.artist)
-
-  const [artistLoading, setArtistLoading] = useState(false);
+  const [isArtist, setIsArtist] = useState(false);
 
   useEffect(() => {
     fetchFromURL(`artists?ids=${artistIds}`).then(response => {
       if (response.status) {
         dispatch(setArtistList(response.data.artists))
-        setArtistLoading(true)
+        setIsArtist(true)
+      }
+      else {
+        if (response.statusCode === 401) {
+          localStorage.removeItem('access-token')
+          navigate('/login')
+        }
       }
     })
   }, [])
@@ -45,181 +41,19 @@ const Home = () => {
             albums: response.data
           }))
         }
+        else {
+          if (response.statusCode === 401) {
+            localStorage.removeItem('access-token')
+            navigate('/login')
+          }
+        }
       });
     })
-  }, [artistLoading])
-
-  console.log(artistAlbums);
+  }, [isArtist])
 
   return (
     <>
-      {artistAlbums?.length > 0 && artistAlbums?.map((artist, index) => (
-        <div className="home-section" key={index}>
-          <h4 className="home-section__title">
-            {artist.name} Albümleri
-          </h4>
-          <div className='c-card'>
-            {
-              artist.albums.items.length > 0 &&
-              artist.albums.items.map((album, index) => (
-                <>
-                  {
-                    index < 10 &&
-                    <div className="c-card__item" key={index}>
-                      <Link to={album.href} className='c-card__hover'>
-                        <BiLinkAlt />
-                      </Link>
-                      <div className="c-card__image">
-                        <img src={album.images[0].url} alt="" />
-                      </div>
-                      <div className="c-card__info">
-                        <div className="c-card__text">${album.name}</div>
-                        <div className="c-card__label">2006 - Albüm</div>
-                      </div>
-                    </div>
-                  }
-
-                </>
-              ))
-            }
-
-          </div>
-        </div>
-      ))}
-
-
-      <div className="home-section">
-        <h4 className="home-section__title">En Çok Dinlenen Sanatçılar</h4>
-        <div className='c-card'>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="home-section">
-        <h4 className="home-section__title">En Beğenilen Çalma Listeleri</h4>
-        <div className='c-card'>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-          <div className="c-card__item">
-            <Link to='/' className='c-card__hover'>
-              <BiLinkAlt />
-            </Link>
-            <div className="c-card__image">
-              <img src={MusicImage} alt="" />
-            </div>
-            <div className="c-card__info">
-              <div className="c-card__text">Akşam Üstü</div>
-              <div className="c-card__label">2006 - Albüm</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <ArtistAlbums />    
     </>
   )
 }
