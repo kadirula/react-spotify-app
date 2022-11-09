@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import albumReducer from './reducers/albumReducer'
-import artistReducer from './reducers/artistReducer'
+import spotifyReducer from './reducers/spotifyReducer'
 
 export default configureStore({
     reducer: {
-        artist: artistReducer,
-        album: albumReducer
+        spotify: spotifyReducer,
     }
 })

@@ -1,6 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
 .app{
     
-    min-height: 200vh;
+    // min-height: 200vh;
     background-image: url(./assets/bg.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -29,11 +39,34 @@
     &__content{
         width: 80%;
         background: #121111cf;
-        // padding: 30px 40px;
+        padding: 30px 40px;
         border-radius: 30px;
         overflow: hidden;
         @media (max-width: 600px) {
             width: 90%; 
         }
     }
+}
+
+div[class*="swiper-button"]{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50%;
+    background-color: #1ed760;
+    &:after{
+        font-size: 14px;
+        color: #fff;
+        font-weight: 700;
+    }
+}
+
+.page-title{
+    font-size: 40px;
+    color: #1ed760;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
 }

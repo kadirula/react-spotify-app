@@ -20,7 +20,9 @@ const Sidebar = () => {
         <span>Menü</span>
         <div className="sidebar__menu">
           <NavLink end to='/' className='sidebar__menu-item'> <FaHome /><span>Anasayfa</span></NavLink>
-          <NavLink end to='/search' className='sidebar__menu-item'> <BiSearch /><span>Ara</span></NavLink>
+          <NavLink to='/popular-artist' className='sidebar__menu-item'> <BiUserCheck /><span>Popüler Yerli Sanatçılar</span></NavLink>
+          <NavLink to='/artist' className='sidebar__menu-item'> <BsMusicNote /> <span>En Çok Dinlenen Albümler</span></NavLink>
+          <NavLink to='/albums' className='sidebar__menu-item'> <FaHome /><span>Popüler Yabancı Sanatçılar</span></NavLink>
           <div
             className='sidebar__menu-item'
             onClick={() => {
@@ -31,16 +33,6 @@ const Sidebar = () => {
             <BiPowerOff /><span>Çıkış Yap</span>
           </div>
 
-        </div>
-      </div>
-
-      <div className="sidebar__box">
-        <span>Diğer</span>
-        <div className="sidebar__menu">
-          <NavLink to='/popular-artist' className='sidebar__menu-item'> <BiUserCheck /><span>Popüler Sanatçılar</span></NavLink>
-          <NavLink to='/artist' className='sidebar__menu-item'> <BsMusicNote /> <span>Artist</span></NavLink>
-          <NavLink to='/albums' className='sidebar__menu-item'> <BsMusicNoteList /> <span>Albums</span></NavLink>
-          <NavLink to='/albums' className='sidebar__menu-item'> <FaHome /><span>Popüler Sanatçılar</span></NavLink>
         </div>
       </div>
 

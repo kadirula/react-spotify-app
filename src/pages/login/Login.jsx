@@ -1,8 +1,20 @@
 import './login.scss';
 import { FaSpotify } from '../../utils/icon'
 import { loginUrl } from '../../api/spotifyAuth'
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(localStorage.getItem('access-token')){
+      navigate('/')
+    }
+  }, [])
+  
+
   return (
     <div className='login'>
       <p className='login__text'>Spotify</p>

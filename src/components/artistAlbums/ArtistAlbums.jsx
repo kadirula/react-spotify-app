@@ -5,11 +5,13 @@ import { BiLinkAlt } from '../../utils/icon';
 
 const ArtistAlbums = () => {
 
-    const { artistAlbums } = useSelector(state => state.artist);
+    // const { artistAlbums } = useSelector(state => state.artist);
+
+    // console.log(artistAlbums);
 
     return (
         <>
-            {artistAlbums?.length > 0 && artistAlbums?.map((artist, index) => (
+            {/* {artistAlbums?.length > 0 && artistAlbums?.map((artist, index) => (
                 <div className="home-section" key={index}>
                     <h4 className="home-section__title">
                         {artist.name} Albümleri
@@ -38,7 +40,7 @@ const ArtistAlbums = () => {
                         }
                     </div>
                 </div>
-            ))}
+            ))} */}
         </>
 
     )
