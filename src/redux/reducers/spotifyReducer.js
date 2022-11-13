@@ -5,8 +5,7 @@ export const spotifyReducer = createSlice({
     initialState: {
         artists: null,
         albums: null,
-        playlists: null,
-        tracks: null
+        playlists: null
     },
     reducers: {
         setArtist: (state, action) => {
@@ -17,9 +16,6 @@ export const spotifyReducer = createSlice({
         },
         setPlaylist: (state, action) => {
             state.playlists = action.payload
-        },
-        setTrack: (state, action) => {
-            state.tracks = action.payload
         }
     }
 })

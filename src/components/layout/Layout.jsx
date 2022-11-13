@@ -1,6 +1,6 @@
 import { Sidebar } from '../index';
 import { Outlet } from 'react-router-dom'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 const Layout = () => {
   return (

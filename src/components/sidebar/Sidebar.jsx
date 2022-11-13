@@ -1,11 +1,9 @@
 import './sidebar.scss'
-import { FaSpotify, FaHome, BiSearch, BiPowerOff, BiUserCheck, BsMusicNote, BsMusicNoteList } from '../../utils/icon'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { Tag } from '../index'
+import { FaSpotify } from '../../utils/icon'
+import { Link } from 'react-router-dom'
+import { Search, Menu } from '../index';
 
 const Sidebar = () => {
-
-  const navigate = useNavigate();
 
   return (
     <div className='sidebar mini'>
@@ -17,28 +15,12 @@ const Sidebar = () => {
       </div>
 
       <div className="sidebar__box">
-        <span>Menü</span>
-        <div className="sidebar__menu">
-          <NavLink end to='/' className='sidebar__menu-item'> <FaHome /><span>Anasayfa</span></NavLink>
-          <NavLink to='/popular-artist' className='sidebar__menu-item'> <BiUserCheck /><span>Popüler Yerli Sanatçılar</span></NavLink>
-          <NavLink to='/artist' className='sidebar__menu-item'> <BsMusicNote /> <span>En Çok Dinlenen Albümler</span></NavLink>
-          <NavLink to='/albums' className='sidebar__menu-item'> <FaHome /><span>Popüler Yabancı Sanatçılar</span></NavLink>
-          <div
-            className='sidebar__menu-item'
-            onClick={() => {
-              localStorage.removeItem("access-token")
-              navigate('/login')
-            }}
-          >
-            <BiPowerOff /><span>Çıkış Yap</span>
-          </div>
-
-        </div>
+        <Search />
       </div>
 
       <div className="sidebar__box">
-        <span>Tags</span>
-        <Tag />
+        <span>Menü</span>
+        <Menu />
       </div>
 
     </div>

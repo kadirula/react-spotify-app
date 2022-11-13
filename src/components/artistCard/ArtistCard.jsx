@@ -4,6 +4,8 @@ import { BiLinkAlt } from '../../utils/icon';
 import artistImage from '../../assets/artist.png';
 import { useSelector } from 'react-redux';
 
+import { artists as artistLocalData } from '../../api/data/artists';
+
 /* Swiper  */
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -21,47 +23,85 @@ const ArtistCard = ({ slider = false }) => {
                 slidesPerView={5}
                 modules={[Navigation]}
                 navigation
+                loop
             >
                 {
-                    artists?.items.map((artist, index) => (
-                        <SwiperSlide key={index}>
-                            <div className="artist-card">
-                                <Link to={`/album/${artist.id}`} className='artist-card__hover'>
-                                    <BiLinkAlt />
-                                </Link>
-                                <div className="artist-card__image">
-                                    <img src={artist.images.length > 0 ? artist.images[0].url : artistImage} alt="" />
+                    artists != null ?
+                        artists?.items.map((artist, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="artist-card">
+                                    <Link to={`/artist/${artist.id}`} className='artist-card__hover'>
+                                        <BiLinkAlt />
+                                    </Link>
+                                    <div className="artist-card__image">
+                                        <img src={artist.images.length > 0 ? artist.images[0].url : artistImage} alt="" />
+                                    </div>
+                                    <div className="artist-card__info">
+                                        <div className="artist-card__text">{artist.name}</div>
+                                        <div className='artist-card__label'>Takipçi : {artist.followers.total.toLocaleString()}</div>
+                                    </div>
                                 </div>
-                                <div className="artist-card__info">
-                                    <div className="artist-card__text">{artist.name}</div>
-                                    <div className='artist-card__label'>Takipçi : {artist.followers.total.toLocaleString()}</div>
-                                </div>
-                            </div>
 
-                        </SwiperSlide>
-                    ))
+                            </SwiperSlide>
+                        ))
+                        :
+                        artistLocalData?.map((artist, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="artist-card">
+                                    <Link to={`/artist/${artist.id}`} className='artist-card__hover'>
+                                        <BiLinkAlt />
+                                    </Link>
+                                    <div className="artist-card__image">
+                                        <img src={artist.image ? artist.image : artistImage} alt="" />
+                                    </div>
+                                    <div className="artist-card__info">
+                                        <div className="artist-card__text">{artist.name}</div>
+                                        {/* <div className='artist-card__label'>Takipçi : {artist.followers.total.toLocaleString()}</div> */}
+                                    </div>
+                                </div>
+
+                            </SwiperSlide>
+                        ))
                 }
             </Swiper>
         )
     }
 
     return (
-        <div className='d-flex flex-wrap align-items-center justify-content-between gap-3'>
+        <div className='d-flex flex-wrap align-items-center gap-3'>
             {
-                artists?.items.map((artist, index) => (
-                    <div className="artist-card" key={index}>
-                        <Link to={`/album/${artist.id}`} className='artist-card__hover'>
-                            <BiLinkAlt />
-                        </Link>
-                        <div className="artist-card__image">
-                            <img src={artist.images.length > 0 ? artist.images[0].url : artistImage} alt="" />
+                artists != null ?
+                    artists?.items.map((artist, index) => (
+                        <div className="artist-card" key={index}>
+                            <Link to={`/artist/${artist.id}`} className='artist-card__hover'>
+                                <BiLinkAlt />
+                            </Link>
+                            <div className="artist-card__image">
+                                <img src={artist.images.length > 0 ? artist.images[0].url : artistImage} alt="" />
+                            </div>
+                            <div className="artist-card__info">
+                                <div className="artist-card__text">{artist.name}</div>
+                                <div className='artist-card__label'>Takipçi : {artist.followers.total}</div>
+                            </div>
                         </div>
-                        <div className="artist-card__info">
-                            <div className="artist-card__text">{artist.name}</div>
-                            <div className='artist-card__label'>Takipçi : {artist.followers.total}</div>
+                    ))
+                    :
+                    artistLocalData?.map((artist, index) => (
+                        <div className="artist-card" key={index}>
+                            <Link to={`/artist/${artist.id}`} className='artist-card__hover'>
+                                <BiLinkAlt />
+                            </Link>
+                            <div className="artist-card__image">
+                                <img src={artist.image ? artist.image : artistImage} alt="" />
+                            </div>
+                            <div className="artist-card__info">
+                                <div className="artist-card__text">{artist.name}</div>
+                                {/* <div className='artist-card__label'>Takipçi : {artist.followers.total.toLocaleString()}</div> */}
+                            </div>
                         </div>
-                    </div>
-                ))
+                    ))
+
+
             }
         </div>
     )

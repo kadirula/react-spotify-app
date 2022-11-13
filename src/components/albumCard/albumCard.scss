@@ -1,7 +1,7 @@
 .album-card{
     position: relative;
     background-color: #000;
-    max-width: 220px;
+    max-width: 235px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +16,7 @@
         border-radius: 10px;
         overflow: hidden;
         max-height: 180px;
+        max-width: 180px;
         border-radius: 50%;
         img {
             width: 100%;

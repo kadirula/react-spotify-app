@@ -1,0 +1,46 @@
+.menu {
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &.active {
+            & > svg {
+                fill: #1ed760;
+            }
+            & > span {
+                color: #1ed760;
+            }
+        }
+        &:hover {
+            & > svg {
+                fill: #1ed760;
+            }
+            & > span {
+                color: #1ed760;
+            }
+        }
+
+        svg {
+            fill: lightgray;
+            font-size: 20px;
+            transition: all 0.4s;
+        }
+        span {
+            color: lightgray;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.4s;
+
+            @media (max-width: 600px) {
+                display: none;
+            }
+        }
+    }
+}

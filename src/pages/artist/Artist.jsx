@@ -5,7 +5,7 @@ const Artist = () => {
   return (
     <div>
         <h2 className='page-title'>
-            Bulunan Tüm Sanatçılar
+           Tüm Sanatçılar
         </h2>
         <ArtistCard />
     </div>

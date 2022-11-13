@@ -1,0 +1,58 @@
+.playlist-detail {
+    &__banner {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        background-color: rgba(0, 0, 0, 0.545);
+        padding: 50px 50px;
+        border-radius: 15px;
+        margin-bottom: 50px;
+    }
+    &__image {
+        max-width: 250px;
+        border-radius: 15px;
+        overflow: hidden;
+        img {
+            width: 100%;
+        }
+    }
+    &__label {
+        font-size: 14px;
+        font-weight: 500;
+        color: lightgray;
+        text-transform: uppercase;
+    }
+    &__title {
+        font-size: 40px;
+        font-weight: 600;
+        color: #fff;
+        transition: all 0.4s;
+        &:hover {
+            color: #1ed760;
+        }
+    }
+    &__sub {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+        span {
+            color: lightgray;
+            font-size: 13px;
+        }
+    }
+    &__author {
+        padding-right: 5px;
+        font-size: 14px;
+        line-height: 1;
+        color: #1ed760;
+        transition: all 0.4s;
+        &:hover {
+            color: darken(#1ed760, 10%);
+        }
+    }
+
+    &__player {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+}
