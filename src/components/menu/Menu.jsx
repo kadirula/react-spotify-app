@@ -9,9 +9,9 @@ const Menu = () => {
     return (
         <div className="menu">
             <NavLink end to='/' className='menu__item'> <FaHome /><span>Anasayfa</span></NavLink>
-            <NavLink to='/popular-artist' className='menu__item'> <BiUserCheck /><span>Popüler Yerli Sanatçılar</span></NavLink>
-            <NavLink to='/artist' className='menu__item'> <BsMusicNote /> <span>En Çok Dinlenen Albümler</span></NavLink>
-            <NavLink to='/albums' className='menu__item'> <FaHome /><span>Popüler Yabancı Sanatçılar</span></NavLink>
+            <NavLink to='/popular-artist' className='menu__item'> <BiUserCheck /><span>Yerli Sanatçılar</span></NavLink>
+            <NavLink to='/artist' className='menu__item'> <BsMusicNote /> <span>Albümler</span></NavLink>
+            <NavLink to='/albums' className='menu__item'> <FaHome /><span>Yabancı Sanatçılar</span></NavLink>
             <div
                 className='menu__item'
                 onClick={() => {

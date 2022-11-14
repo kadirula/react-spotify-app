@@ -14,7 +14,7 @@ const Sidebar = () => {
         </Link>
       </div>
 
-      <div className="sidebar__box">
+      <div className="sidebar__box sidebar__box--search">
         <Search />
       </div>
 

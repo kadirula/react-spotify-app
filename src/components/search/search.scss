@@ -1,6 +1,10 @@
+@import '../../breakpoints.scss';
 .search{
     max-width: 500px;
     margin: 0 auto;
+    @include mobile(){
+        padding: 10px 15px;
+    }
 
     .search__item{
         position: relative;
@@ -9,6 +13,10 @@
         width: 100%;
         padding: 5px 10px;
         border-radius: 32px;
+        @include tablet(){
+            border: 2px solid #1ed760;
+        }
+
     }
     input{
         width: 100%;

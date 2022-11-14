@@ -1,7 +1,9 @@
+@import '../../breakpoints.scss';
 .album-card{
     position: relative;
     background-color: #000;
     max-width: 235px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,6 +11,9 @@
     border-radius: 10px;
     overflow: hidden;
     gap: 15px;
+    @include mobile(){
+        max-width: 100%;
+    }
     &:hover .album-card__image img{
         transform: scale(1.06);
     }

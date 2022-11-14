@@ -1,3 +1,4 @@
+@import '../../breakpoints.scss';
 .sidebar {
     height: max-content;
     width: 20%;
@@ -6,18 +7,16 @@
     padding: 20px 20px;
     position: sticky;
     top: 2%;
-
-    @media (max-width: 600px) {
+    @include tablet(){
         width: 10%;
-        padding: 0;
-        height: max-content;
+        padding: 10px 0;
     }
 
     &__box {
         background-color: #000;
         padding: 10px 20px;
         border-radius: 12px;
-        @media (max-width: 600px) {
+        @include tablet(){
             background-color: transparent;
             padding: 0 5px;
         }
@@ -33,7 +32,13 @@
             border-bottom: 1px solid #d3d3d374;
             padding-bottom: 5px;
 
-            @media (max-width: 600px) {
+            @include tablet(){
+                display: none;
+            }
+        }
+
+        &--search{
+            @include tablet(){
                 display: none;
             }
         }
@@ -53,12 +58,15 @@
         &-icon {
             font-size: 50px;
             color: #1ed760;
+            @include tablet(){
+                font-size: 35px;
+            }
         }
         &-text {
             font-size: 25px;
             color: #1ed760;
             font-weight: 600;
-            @media (max-width: 600px) {
+            @include tablet(){
                 display: none;
             }
         }

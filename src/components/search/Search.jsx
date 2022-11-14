@@ -19,13 +19,15 @@ const Search = () => {
         const types = 'album%2Cartist%2Cplaylist'
 
         fetchFromURL(`search?query=${searchText}&type=${types}`).then(res => {
+
             if (res.status) {
-
                 dispatch(setLoading(true))
-
+                res.data.artists && dispatch(setArtist(res.data.artists.items));
                 res.data.albums && dispatch(setAlbum(res.data.albums));
-                res.data.artists && dispatch(setArtist(res.data.artists));
                 res.data.playlists && dispatch(setPlaylist(res.data.playlists));
+
+                navigate('/');
+                setSearchText('')
 
             }
             else {

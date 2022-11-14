@@ -1,37 +1,33 @@
-export const artists = [
-    {
-        name: 'Eminem',
-        image: 'https://i.scdn.co/image/ab6761610000e5eba00b11c129b27a88fc72f36b',
-        id: '7dGJo4pcD2V6oG8kP0tJRR',
-    },
-    {
-        name: 'Martin Garrix',
-        image: 'https://i.scdn.co/image/ab6761610000e5eb66d17ee8690d2e8d94ee7387',
-        id: '60d24wfXkVzDSfLS6hyCjZ',
-    },
-    {
-        name: 'Bebe Rexha',
-        image: 'https://i.scdn.co/image/ab6761610000e5ebabfac786f093c4da55c99d4e',
-        id: '64M6ah0SkkRsnPGtGiRAbb',
-    },
-    {
-        name: 'Loveless',
-        image: 'https://i.scdn.co/image/ab6761610000e5eb45d130bdd61789d468057d59',
-        id: '1MP7xlABJ13LtmHfG77SCJ',
-    },
-    {
-        name: 'Ed Sheeran',
-        image: 'https://i.scdn.co/image/ab6761610000e5eb12a2ef08d00dd7451a6dbed6',
-        id: '6eUKZXaKkcviH0Ku9w2n3V',
-    },
-    {
-        name: 'Dua Lipa',
-        image: 'https://i.scdn.co/image/ab6761610000e5ebd42a27db3286b58553da8858',
-        id: '6M2wZ9GZgrQXHCFfjv46we',
-    },
-    {
-        name: 'Bad Bunny',
-        image: 'https://i.scdn.co/image/ab6761610000e5eb8ee9a6f54dcbd4bc95126b14',
-        id: '4q3ewBCX7sLwd24euuV69X',
-    },
-];
+const artistAll = [
+    '4XP7cGw4t8BqZ8Du5q3bHg',
+    '2yMN0IP20GOaN6q0p0zL5k',
+    '1dpqJqIuNqideTvmxBsSku',
+    '4uGB0nZ5d1iCXS3sHR3pzm',
+    '5gFPi3KWXEwA9bLEO47Ow0',
+    '1mpOD8ZwHnbsryIuXWq0R1',
+    '64d1rUxfizSAOE9UbMnUZd',
+    '4525TiJDbBD4mZJ7EZArT0',
+    '1Fg19vpUJpAAPFjnKaVYVW',
+    '2h1EEQ0lD01lPKDRGisvL4',
+    '1nFJWl30l3PAHei86OxN0i',
+    '23xJQJM7peht77DF6YNEoq',
+    '3Z814BstLaKbLqKHXsht8O'
+]
+
+const localArtists = [
+    '4XP7cGw4t8BqZ8Du5q3bHg',
+    '2yMN0IP20GOaN6q0p0zL5k',
+    '1dpqJqIuNqideTvmxBsSku',
+    '4uGB0nZ5d1iCXS3sHR3pzm',
+    '5gFPi3KWXEwA9bLEO47Ow0',
+    '1mpOD8ZwHnbsryIuXWq0R1',
+    '64d1rUxfizSAOE9UbMnUZd',
+    '4525TiJDbBD4mZJ7EZArT0',
+    '1Fg19vpUJpAAPFjnKaVYVW',
+    '2h1EEQ0lD01lPKDRGisvL4',
+    '1nFJWl30l3PAHei86OxN0i',
+    '23xJQJM7peht77DF6YNEoq',
+    '3Z814BstLaKbLqKHXsht8O'
+]
+
+export { artistAll, localArtists }

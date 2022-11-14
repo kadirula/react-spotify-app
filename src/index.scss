@@ -1,3 +1,4 @@
+@import './breakpoints.scss';
 *{
     margin: 0;
     padding: 0;
@@ -9,14 +10,12 @@ a{
 }
 
 .app{
-    
-    // min-height: 200vh;
     background-image: url(./assets/bg.png);
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 2% 5%;
-    @media (max-width:600px){
-        padding: 2% 0;
+    padding: 2% 0;
+    @include mobile(){
+        padding: 2% 0; 
     }
 }
 
@@ -24,7 +23,7 @@ a{
     @media (min-width:1400px){
         max-width: 1700px;
     }
-    @media (max-width:600px){
+    @media (max-width:991px){
         max-width: 100%;
     }
 }
@@ -34,6 +33,9 @@ a{
     justify-content: space-between;
     gap: 20px;
     min-height: 100vh;
+    @include mobile(){
+        gap:10px
+    }
     
 
     &__content{
@@ -42,8 +44,13 @@ a{
         padding: 30px 40px;
         border-radius: 30px;
         overflow: hidden;
-        @media (max-width: 600px) {
+        @include mobile(){
             width: 90%; 
+            padding: 10px 10px;
+        }
+        @include tablet(){
+            width: 90%; 
+            padding: 20px 30px;
         }
     }
 }
@@ -69,4 +76,7 @@ div[class*="swiper-button"]{
     text-transform: uppercase;
     margin-bottom: 20px;
     display: block;
+    @include mobile(){
+        font-size: 25px;
+    }
 }

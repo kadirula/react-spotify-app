@@ -1,5 +1,6 @@
-.album-detail{
-    &__banner{
+@import "../../breakpoints.scss";
+.album-detail {
+    &__banner {
         display: flex;
         align-items: center;
         gap: 50px;
@@ -7,51 +8,66 @@
         padding: 50px 50px;
         border-radius: 15px;
         margin-bottom: 50px;
+        @include tablet() {
+            flex-direction: column;
+            padding: 20px 20px;
+        }
     }
-    &__image{
+    &__image {
         max-width: 250px;
         border-radius: 15px;
         overflow: hidden;
-        img{
+        img {
             width: 100%;
         }
     }
-    &__label{
+    &__info {
+        @include tablet() {
+            text-align: center;
+        }
+    }
+    &__label {
         font-size: 14px;
         font-weight: 500;
         color: lightgray;
         text-transform: uppercase;
     }
-    &__title{
+    &__title {
         font-size: 40px;
         font-weight: 600;
         color: #fff;
-        transition: all .4s;
-        &:hover{
+        transition: all 0.4s;
+        @include tablet(){
+            font-size: 25px;
+        }
+        &:hover {
             color: #1ed760;
         }
     }
-    &__sub{
+    &__sub {
         display: flex;
         align-items: center;
         margin: 15px 0;
-        span{
+        @include tablet() {
+            margin: 5px 0 0;
+        }
+        span {
             color: lightgray;
             font-size: 13px;
         }
     }
-    &__author{
+    &__author {
         padding-right: 5px;
         font-size: 14px;
         line-height: 1;
         color: #1ed760;
-        transition: all .4s;
-        &:hover{
+        transition: all 0.4s;
+        &:hover {
             color: darken(#1ed760, 10%);
         }
     }
 
-    &__player{
+    &__player {
         border-radius: 15px;
         overflow: hidden;
     }

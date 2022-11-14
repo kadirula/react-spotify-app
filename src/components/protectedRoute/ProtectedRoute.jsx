@@ -8,8 +8,6 @@ const ProtectedRoute = ({ children }) => {
 
     const [token, setToken] = useState(localStorage.getItem("access-token"));
 
-    console.log(token);
-
     useEffect(() => {
         window.location.hash = "";
 

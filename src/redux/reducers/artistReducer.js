@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const artistReducer = createSlice({
     name: 'artist',
-    initialState:{
+    initialState: {
         artistData: null
     },
-    reducers:{
+    reducers: {
         setArtistData: (state, action) => {
             state.artistData = action.payload
         }

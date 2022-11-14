@@ -19,10 +19,20 @@ const PlaylistCard = ({ slider = false }) => {
         return (
             <Swiper
                 spaceBetween={20}
-                slidesPerView={5}
                 modules={[Navigation]}
                 navigation
                 loop
+                breakpoints={{
+                    0: {
+                        slidesPerView: 1
+                    },
+                    600: {
+                        slidesPerView: 2
+                    },
+                    1024: {
+                        slidesPerView: 5
+                    }
+                }}
             >
                 {
                     playlists != null ?
@@ -61,7 +71,7 @@ const PlaylistCard = ({ slider = false }) => {
     }
 
     return (
-        <div className='d-flex flex-wrap align-items-center gap-3'>
+        <div className='d-flex flex-wrap align-items-center gap-3 justify-content-center justify-content-md-start'>
             {
                 playlists != null ?
                     playlists?.items.map((playlist, index) => (

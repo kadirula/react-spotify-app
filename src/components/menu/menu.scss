@@ -1,3 +1,4 @@
+@import '../../breakpoints.scss';
 .menu {
     &__item {
         display: flex;
@@ -6,9 +7,15 @@
         margin-bottom: 8px;
         text-decoration: none;
         cursor: pointer;
+        @include tablet(){
+            justify-content: center;
+        }
 
         &:last-child {
             margin-bottom: 0;
+            @include tablet(){
+                margin-bottom: 15px;
+            }
         }
         &.active {
             & > svg {
@@ -38,7 +45,7 @@
             font-weight: 500;
             transition: all 0.4s;
 
-            @media (max-width: 600px) {
+            @include tablet(){
                 display: none;
             }
         }
