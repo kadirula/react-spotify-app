@@ -30,4 +30,14 @@ const localArtists = [
     '3Z814BstLaKbLqKHXsht8O'
 ]
 
-export { artistAll, localArtists }
+const foreignArtists = [
+    '60d24wfXkVzDSfLS6hyCjZ',
+    '7dGJo4pcD2V6oG8kP0tJRR',
+    '64M6ah0SkkRsnPGtGiRAbb',
+    '1Cs0zKBU1kc0i8ypK3B9ai',
+    '3Nrfpe0tUJi4K4DXYWgMUX',
+    '4q3ewBCX7sLwd24euuV69X',
+    '6eUKZXaKkcviH0Ku9w2n3V'
+]
+
+export { artistAll, localArtists, foreignArtists }

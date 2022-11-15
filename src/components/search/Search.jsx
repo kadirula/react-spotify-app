@@ -23,8 +23,8 @@ const Search = () => {
             if (res.status) {
                 dispatch(setLoading(true))
                 res.data.artists && dispatch(setArtist(res.data.artists.items));
-                res.data.albums && dispatch(setAlbum(res.data.albums));
-                res.data.playlists && dispatch(setPlaylist(res.data.playlists));
+                res.data.albums && dispatch(setAlbum(res.data.albums.items));
+                res.data.playlists && dispatch(setPlaylist(res.data.playlists.items));
 
                 navigate('/');
                 setSearchText('')

@@ -49,7 +49,7 @@ const PlaylistDetail = () => {
                     <div className="playlist-detail__label">
                         ÇALMA LİSTESİ
                     </div>
-                    <a href={playlistData?.external_urls.spotify} className="playlist-detail__title">
+                    <a href={playlistData?.external_urls.spotify} target='_blank' className="playlist-detail__title">
                         {playlistData?.name}
                     </a>
                     <div className="playlist-detail__sub">

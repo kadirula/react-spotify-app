@@ -3,6 +3,7 @@
     position: relative;
     background-color: #000;
     max-width: 235px;
+    
     margin: 0 auto;
     border-radius: 10px;
     overflow: hidden;
@@ -18,6 +19,7 @@
     &__image{
         border-radius: 10px;
         overflow: hidden;
+        height: 175px;
         img{
             width: 100%;
             height: 100%;

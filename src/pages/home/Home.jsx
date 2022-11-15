@@ -5,6 +5,7 @@ import { setLoading } from '../../redux/reducers/siteReducer';
 
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { setArtist } from '../../redux/reducers/spotifyReducer';
 
 
 
@@ -13,7 +14,6 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const { loading } = useSelector(state => state.site);
-  const { artists } = useSelector(state => state.spotify);
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,27 +34,27 @@ const Home = () => {
             <div className="home-section home-section--search">
               <Search />
             </div>
-            
+
             <div className="home-section">
               <h2 className="home-section__title">
                 Sanatçılar
               </h2>
-              <ArtistCard />
+              <ArtistCard slider={true} />
             </div>
 
 
             <div className="home-section">
-              <Link to='/albums' className="home-section__title">
-                Albüm
-              </Link>
-              <AlbumCard slider={true} />
+              <h2 className="home-section__title">
+                Albümler
+              </h2>
+              <AlbumCard />
             </div>
 
             <div className="home-section">
-              <Link to='/playlists' className="home-section__title">
-                Oynatma Listesi
-              </Link>
-              <PlaylistCard slider={true} />
+              <h2 className="home-section__title">
+                Oynatma Listeleri
+              </h2>
+              <PlaylistCard />
             </div>
           </>
       }
