@@ -3,15 +3,32 @@ import { createSlice } from "@reduxjs/toolkit";
 export const artistReducer = createSlice({
     name: 'artist',
     initialState: {
-        artistData: null
+        artistDetail: null,
+        searchArtists: null,
+        homeArtists: null,
+        artists: null
     },
     reducers: {
-        setArtistData: (state, action) => {
-            state.artistData = action.payload
+        setSearchArtist: (state, action) => {
+            state.searchArtists = action.payload
+        },
+        setArtist: (state, action) => {
+            state.artists = action.payload
+        },
+        setHomeArtist: (state, action) => {
+            state.homeArtists = action.payload
+        },
+        setArtistDetail: (state, action) => {
+            state.artistDetail = action.payload
         }
+
     }
 })
 
-export const { setArtistData } = artistReducer.actions;
+export const { 
+    setArtistDetail, 
+    setSearchArtist, 
+    setHomeArtist, 
+    setArtist } = artistReducer.actions;
 
 export default artistReducer.reducer;

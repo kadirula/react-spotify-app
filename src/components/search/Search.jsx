@@ -1,11 +1,10 @@
 import React from './search.scss';
 import { useState } from 'react';
-import { fetchFromURL } from '../../api/spotify';
-import { BiSearch } from '../../utils/icon';
-import { setAlbum, setArtist, setPlaylist } from '../../redux/reducers/spotifyReducer';
-import { setLoading } from '../../redux/reducers/siteReducer';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { fetchFromURL } from '../../api/spotify';
+import { BiSearch } from '../../utils/icon';
+import { action } from '../../redux/actions';
 
 const Search = () => {
     const [searchText, setSearchText] = useState('');
@@ -21,12 +20,14 @@ const Search = () => {
         fetchFromURL(`search?query=${searchText}&type=${types}`).then(res => {
 
             if (res.status) {
-                dispatch(setLoading(true))
-                res.data.artists && dispatch(setArtist(res.data.artists.items));
-                res.data.albums && dispatch(setAlbum(res.data.albums.items));
-                res.data.playlists && dispatch(setPlaylist(res.data.playlists.items));
+                dispatch(action.site.setLoading(true))
 
-                navigate('/');
+                res.data.artists && dispatch(action.artist.setSearchArtist(res.data.artists.items));
+                res.data.albums && dispatch(action.album.setSearchAlbum(res.data.albums.items));
+                res.data.playlists && dispatch(action.playlist.setSearchPlaylist(res.data.playlists.items));
+
+                navigate('/search');
+                
                 setSearchText('')
 
             }
@@ -34,7 +35,7 @@ const Search = () => {
                 if (res.statusCode === 401) {
                     localStorage.removeItem('access-token')
                     navigate('/login')
-                  }
+                }
             }
         })
     }

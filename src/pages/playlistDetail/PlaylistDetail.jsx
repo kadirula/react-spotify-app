@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { fetchFromURL } from '../../api/spotify';
-import { setPlaylistData } from '../../redux/reducers/playlistReducer';
+import { setPlaylistDetail } from '../../redux/reducers/playlistReducer';
 
 import SpotifyPlayer from 'react-spotify-player';
 import { Loading } from '../../components';
@@ -16,7 +16,7 @@ const PlaylistDetail = () => {
 
     const { id } = useParams();
 
-    const { playlistData } = useSelector(state => state.playlist);
+    const { playlistDetail } = useSelector(state => state.playlist);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,8 +27,7 @@ const PlaylistDetail = () => {
 
         fetchFromURL(`playlists/${id}`).then(res => {
             if (res.status) {
-                console.log(res);
-                dispatch(setPlaylistData(res.data))
+                dispatch(setPlaylistDetail(res.data))
             }
             else {
                 if (res.statusCode === 401) {
@@ -43,22 +42,22 @@ const PlaylistDetail = () => {
         <div className='playlist-detail'>
             <div className="playlist-detail__banner">
                 <div className="playlist-detail__image">
-                    <img src={playlistData?.images[0].url} alt="" />
+                    <img src={playlistDetail?.images[0].url} alt="" />
                 </div>
                 <div className="playlist-detail__info">
                     <div className="playlist-detail__label">
                         ÇALMA LİSTESİ
                     </div>
-                    <a href={playlistData?.external_urls.spotify} target='_blank' className="playlist-detail__title">
-                        {playlistData?.name}
+                    <a href={playlistDetail?.external_urls.spotify} target='_blank' className="playlist-detail__title">
+                        {playlistDetail?.name}
                     </a>
                     <div className="playlist-detail__sub">
-                        <Link to={`/user/${playlistData?.owner.id}`} className="playlist-detail__author">
-                            Yazar: {playlistData?.owner.display_name}
+                        <Link to={`/user/${playlistDetail?.owner.id}`} className="playlist-detail__author">
+                            Yazar: {playlistDetail?.owner.display_name}
                         </Link>
                         <span>
                             - Takipçi: {
-                                playlistData?.followers.total.toLocaleString()
+                                playlistDetail?.followers.total.toLocaleString()
                             }
                         </span>
                     </div>
@@ -73,7 +72,7 @@ const PlaylistDetail = () => {
                         </div>
                         :
                         <SpotifyPlayer
-                            uri={playlistData?.uri}
+                            uri={playlistDetail?.uri}
                             size={{
                                 width: '100%',
                                 height: '500'

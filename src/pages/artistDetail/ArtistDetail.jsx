@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import { fetchFromURL } from '../../api/spotify';
-import { setArtistData } from '../../redux/reducers/artistReducer';
+import { setArtistDetail } from '../../redux/reducers/artistReducer';
 
 import SpotifyPlayer from 'react-spotify-player';
 import { Loading } from '../../components';
@@ -12,7 +12,7 @@ const ArtistDetail = () => {
 
     const { id } = useParams();
 
-    const { artistData } = useSelector(state => state.artist);
+    const { artistDetail } = useSelector(state => state.artist);
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ const ArtistDetail = () => {
 
         fetchFromURL(`artists/${id}`).then(res => {
             if (res.status) {
-                dispatch(setArtistData(res.data))
+                dispatch(setArtistDetail(res.data))
             }
             else {
                 if (res.statusCode === 401) {
@@ -45,26 +45,26 @@ const ArtistDetail = () => {
                 <div
                     className="artist-detail__image"
                     style={{
-                        backgroundImage: `url(${artistData?.images[0].url})`
+                        backgroundImage: `url(${artistDetail?.images[0].url})`
                     }}
                 >
                 </div>
 
                 <div className="artist-detail__info">
                     <a
-                        href={artistData?.external_urls.spotify}
+                        href={artistDetail?.external_urls.spotify}
                         target='_blank'
                         className="artist-detail__title">
-                        {artistData?.name}
+                        {artistDetail?.name}
                     </a>
                     <div className="artist-detail__subtext">
-                        Takipçi: {artistData?.followers.total.toLocaleString()}
+                        Takipçi: {artistDetail?.followers.total.toLocaleString()}
                     </div>
                     {
-                        artistData?.genres.length > 0 &&
+                        artistDetail?.genres.length > 0 &&
                         <ul className='artist-detail__tag'>
                             {
-                                artistData?.genres.map((item, index) => (
+                                artistDetail?.genres.map((item, index) => (
                                     <li key={index}>#{item}</li>
                                 ))
                             }
@@ -80,7 +80,7 @@ const ArtistDetail = () => {
                         </div>
                         :
                         <SpotifyPlayer
-                            uri={artistData?.uri}
+                            uri={artistDetail?.uri}
                             size={{
                                 width: '100%',
                                 height: '500'

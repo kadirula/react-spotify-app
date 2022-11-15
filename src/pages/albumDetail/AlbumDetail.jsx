@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { fetchFromURL } from '../../api/spotify';
-import { setAlbumData } from '../../redux/reducers/albumReducer';
+import { setAlbumDetail } from '../../redux/reducers/albumReducer';
 
 import SpotifyPlayer from 'react-spotify-player';
 import { Loading } from '../../components';
@@ -15,7 +15,7 @@ const AlbumDetail = () => {
 
     const { id } = useParams();
 
-    const { albumData } = useSelector(state => state.album);
+    const { albumDetail } = useSelector(state => state.album);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const AlbumDetail = () => {
         fetchFromURL(`albums/${id}`).then(res => {
             if (res.status) {
                 console.log(res);
-                dispatch(setAlbumData(res.data))
+                dispatch(setAlbumDetail(res.data))
             }
             else {
                 if (res.statusCode === 401) {
@@ -42,30 +42,30 @@ const AlbumDetail = () => {
         <div className='album-detail'>
             <div className="album-detail__banner">
                 <div className="album-detail__image">
-                    <img src={albumData?.images[0].url} alt="" />
+                    <img src={albumDetail?.images[0].url} alt="" />
                 </div>
                 <div className="album-detail__info">
                     <div className="album-detail__label">
-                        {albumData?.type}
+                        {albumDetail?.type}
                     </div>
-                    <a href={albumData?.external_urls.spotify} className="album-detail__title">
-                        {albumData?.name}
+                    <a href={albumDetail?.external_urls.spotify} className="album-detail__title">
+                        {albumDetail?.name}
                     </a>
                     <div className="album-detail__sub">
-                        <Link to={`/artist/${albumData?.artists[0].id}`} className="album-detail__author">
-                            {albumData?.artists[0].name}
+                        <Link to={`/artist/${albumDetail?.artists[0].id}`} className="album-detail__author">
+                            {albumDetail?.artists[0].name}
                         </Link>
                         <span>
                             - {
-                                new Date(albumData?.release_date).toLocaleDateString('tr-TR')
+                                new Date(albumDetail?.release_date).toLocaleDateString('tr-TR')
                             }
                         </span>
                     </div>
                     {
-                        albumData?.genres.length > 0 &&
+                        albumDetail?.genres.length > 0 &&
                         <ul className='album-detail__tag'>
                             {
-                                albumData?.genres.map((item, index) => (
+                                albumDetail?.genres.map((item, index) => (
                                     <li key={index}>#{item}</li>
                                 ))
                             }
@@ -82,7 +82,7 @@ const AlbumDetail = () => {
                         </div>
                         :
                         <SpotifyPlayer
-                            uri={albumData?.uri}
+                            uri={albumDetail?.uri}
                             size={{
                                 width: '100%',
                                 height: '500'

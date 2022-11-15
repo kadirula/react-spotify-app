@@ -3,15 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 export const playlistReducer = createSlice({
     name: 'playlist',
     initialState:{
-        playlistData: null
+        playlistDetail: null,
+        searchPlaylists: null,
     },
     reducers:{
-        setPlaylistData: (state, action) => {
-            state.playlistData = action.payload
+        setSearchPlaylist: (state, action) => {
+            state.searchPlaylists = action.payload
+        },
+        setPlaylistDetail: (state, action) => {
+            state.playlistDetail = action.payload
         }
     }
 })
 
-export const { setPlaylistData } = playlistReducer.actions;
+export const { setSearchPlaylist, setPlaylistDetail } = playlistReducer.actions;
 
 export default playlistReducer.reducer;

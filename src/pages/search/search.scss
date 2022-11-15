@@ -1,24 +1,23 @@
-@import '../../breakpoints.scss';
+@import "../../breakpoints.scss";
 
-.home-section {
-    &:not(:last-child){
+.search-section {
+    &:not(:last-child) {
         margin-bottom: 30px;
     }
-    &--search{
+    &--search {
         display: none;
-        @include tablet(){
+        @include tablet() {
             display: block;
         }
     }
-    .home-section__title {
+    &__title {
         font-size: 40px;
         color: #1ed760;
         font-weight: bold;
         display: inline-block;
-        @include mobile(){
+        @include mobile() {
             display: block;
             text-align: center;
         }
     }
 }
-

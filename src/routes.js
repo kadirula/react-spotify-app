@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout, ProtectedRoute } from "./components";
-import { Album, AlbumDetail, Artist, ArtistDetail, Home,Login, NotFound, Playlist, PlaylistDetail, User } from "./pages";
+import { Album, AlbumDetail, Artist, ArtistDetail, Home, Search, Login, NotFound, Playlist, PlaylistDetail, User } from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: '/artist/:type',
+        path: '/artists/:type',
         element: <Artist />
       },
       {
@@ -34,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/albums',
         element: <Album />
+      },
+      {
+        path: '/search',
+        element: <Search />
       },
       {
         path: '/user/:id',
