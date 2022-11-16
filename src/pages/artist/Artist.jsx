@@ -1,12 +1,11 @@
 import './artist.scss'
-import { ArtistCard, HomeArtistCard, Loading } from '../../components'
+import { ArtistCard, Loading } from '../../components'
 import { useParams } from 'react-router-dom'
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchFromURL } from '../../api/spotify';
-import { localArtists, foreignArtists } from '../../api/data/artists';
+import { artistAll } from '../../api/data/artists';
 import { useDispatch, useSelector } from 'react-redux';
 import { action } from '../../redux/actions';
-import { useState } from 'react';
 
 const Artist = () => {
 
@@ -24,14 +23,22 @@ const Artist = () => {
       setLoading(false)
     }, 2000);
     if (type === 'local') {
-      fetchFromURL(`artists?ids=${localArtists.join(',')}`).then(res => {
+
+      // artistAll dizisinin isLocal değeleri true olanları yakarlıyoruz ve id değerleri aralarına virgül ekleyerek birleştiriyoruz. 1,2,3,4,5,6,7 gibi
+      const localArtistAll = artistAll.filter(item => item.isLocal).reduce((a, b) => (a.id || a) + ',' + b.id)
+
+      fetchFromURL(`artists?ids=${localArtistAll}`).then(res => {
         if (res.status) {
           dispatch(action.artist.setArtist(res.data.artists))
         }
       })
     }
     else if (type === 'foreign') {
-      fetchFromURL(`artists?ids=${foreignArtists.join(',')}`).then(res => {
+
+      // artistAll dizisinin isLocal değeleri false olanları yakarlıyoruz ve id değerleri aralarına virgül ekleyerek birleştiriyoruz. 1,2,3,4,5,6,7 gibi
+      const foreignArtistAll = artistAll.filter(item => !item.isLocal).reduce((a, b) => (a.id || a) + ',' + b.id)
+
+      fetchFromURL(`artists?ids=${foreignArtistAll}`).then(res => {
         if (res.status) {
           dispatch(action.artist.setArtist(res.data.artists))
         }
@@ -56,17 +63,17 @@ const Artist = () => {
             <Loading loading={loading} />
           </div>
           :
-          <div className='d-flex flex-wrap gap-3 justify-content-center justify-content-md-start'>
+          <div className='d-flex flex-wrap gap-3 justify-content-center'>
             {
               artists?.map((artist, index) => (
-                <>
+                <React.Fragment key={index}>
                   <ArtistCard
                     id={artist?.id}
                     image={artist?.images[0]?.url}
                     name={artist?.name}
                     followers={artist?.followers.total}
                   />
-                </>
+                </React.Fragment>
               ))
             }
           </div>

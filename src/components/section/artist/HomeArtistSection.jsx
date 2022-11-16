@@ -17,8 +17,11 @@ const HomeArtistSection = () => {
     const { homeArtists } = useSelector(state => state.artist);
 
     useEffect(() => {
+        // artistAll dizisinin id key indeki değerleri yakalayıp aralarına virgül ekleyerek birleştiriyoruz. 1,2,3,4,5,6,7 gibi
+        const artistAllIds = artistAll.reduce((a,b) => (a.id || a) + ',' + b.id)
+
         if (homeArtists == null) {
-            fetchFromURL(`artists?ids=${artistAll.join(',')}`).then(res => {
+            fetchFromURL(`artists?ids=${artistAllIds}`).then(res => {
                 if (res.status) {
                     dispatch(action.artist.setHomeArtist(res.data.artists))
                 }

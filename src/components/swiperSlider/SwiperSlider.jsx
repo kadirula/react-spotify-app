@@ -12,7 +12,7 @@ const SwiperSlider = ({ children }) => {
       spaceBetween={20}
       modules={[Navigation]}
       navigation
-      loop
+
       breakpoints={{
         0: {
           slidesPerView: 1
