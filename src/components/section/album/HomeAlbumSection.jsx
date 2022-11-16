@@ -25,7 +25,7 @@ const HomeAlbumSection = () => {
                 }
                 else {
                     dispatch(action.site.setError(res.err))
-                    navigate('/error');
+                    // navigate('/error');
                 }
             })
         }

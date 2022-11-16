@@ -1,7 +1,6 @@
 import './home.scss'
 import { useEffect, useState } from 'react';
 import { HomeArtistSection, HomeAlbumSection, Loading, Search } from '../../components';
-import { useDispatch, useSelector } from 'react-redux';
 
 
 const Home = () => {

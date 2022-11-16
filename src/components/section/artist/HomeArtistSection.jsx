@@ -29,7 +29,7 @@ const HomeArtistSection = () => {
                 }
                 else {
                     dispatch(action.site.setError(res.err))
-                    navigate('/error');
+                    // navigate('/error');
                 }
             })
         }
