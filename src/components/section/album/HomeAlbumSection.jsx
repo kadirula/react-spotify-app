@@ -9,9 +9,10 @@ import { SwiperSlider, AlbumCard } from '../../index';
 
 /* Swiper  */
 import { SwiperSlide } from 'swiper/react';
+import { useNavigate } from 'react-router-dom';
 
 const HomeAlbumSection = () => {
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const { homeAlbums } = useSelector(state => state.album);
@@ -23,7 +24,8 @@ const HomeAlbumSection = () => {
                     dispatch(action.album.setHomeAlbum(res.data.albums))
                 }
                 else {
-                    // TO DO hata mesajı gösterilecek
+                    dispatch(action.site.setError(res.err))
+                    navigate('/error');
                 }
             })
         }

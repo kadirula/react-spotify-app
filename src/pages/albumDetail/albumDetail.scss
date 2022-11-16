@@ -50,6 +50,7 @@
         margin: 15px 0;
         @include tablet() {
             margin: 5px 0 0;
+            justify-content: center;
         }
         span {
             color: lightgray;

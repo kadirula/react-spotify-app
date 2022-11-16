@@ -1,5 +1,5 @@
 import './sidebar.scss'
-import { FaSpotify } from '../../utils/icon'
+import { GiMusicSpell } from '../../utils/icon'
 import { Link } from 'react-router-dom'
 import { Search, Menu } from '../index';
 
@@ -10,7 +10,7 @@ const Sidebar = () => {
 
       <div className="sidebar__box">
         <Link to='/' className="sidebar__logo">
-          <FaSpotify className='sidebar__logo-icon' /> <span className='sidebar__logo-text'>Spotify App</span>
+          <GiMusicSpell className='sidebar__logo-icon' /> <span className='sidebar__logo-text'>Spotify Api</span>
         </Link>
       </div>
 

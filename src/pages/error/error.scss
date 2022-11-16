@@ -1,0 +1,19 @@
+.error{
+    padding: 20px 30px;
+    background-color: #000;
+    border-radius: 12px;
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+    &__status{
+        font-size: 35px;
+        line-height: 1;
+        font-weight: 600;
+        color: #990c0c;
+        margin-bottom: 15px;   
+    }
+    &__message{
+        color: #fff;
+        font-size: 25px;
+    }
+}

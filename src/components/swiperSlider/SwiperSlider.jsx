@@ -18,7 +18,7 @@ const SwiperSlider = ({ children }) => {
           slidesPerView: 1
         },
         600: {
-          slidesPerView: 2
+          slidesPerView: 3
         },
         1024: {
           slidesPerView: 5

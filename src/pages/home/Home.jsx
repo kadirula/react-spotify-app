@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { action } from '../../redux/actions';
 
 
-
 const Home = () => {
 
   const dispatch = useDispatch();
@@ -28,20 +27,20 @@ const Home = () => {
           </div>
           :
           <>
-            <div className="home-section home-section--search">
+            <div className="section section--search">
               <Search />
             </div>
 
-            <div className="home-section">
-              <h2 className="home-section__title">
+            <div className="section">
+              <h2 className="section__title">
                 Sanatçılar
               </h2>
               <HomeArtistSection />
             </div>
 
 
-            <div className="home-section">
-              <h2 className="home-section__title">
+            <div className="section">
+              <h2 className="section__title">
                 Albümler
               </h2>
               <HomeAlbumSection />

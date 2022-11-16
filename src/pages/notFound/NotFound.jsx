@@ -1,8 +1,11 @@
-import React from 'react'
+import './notFound.scss'
+import NotFoundImage from '../../assets/not-found.png';
 
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <div className='not-found'>
+      <img src={NotFoundImage} alt="" />
+    </div>
   )
 }
 

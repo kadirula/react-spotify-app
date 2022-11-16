@@ -1,6 +1,6 @@
 import './artist.scss'
 import { ArtistCard, Loading } from '../../components'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react';
 import { fetchFromURL } from '../../api/spotify';
 import { artistAll } from '../../api/data/artists';
@@ -9,6 +9,7 @@ import { action } from '../../redux/actions';
 
 const Artist = () => {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
@@ -18,12 +19,13 @@ const Artist = () => {
   const { artists } = useSelector(state => state.artist)
 
   useEffect(() => {
+
     setLoading(true);
     setTimeout(() => {
       setLoading(false)
     }, 2000);
-    if (type === 'local') {
 
+    if (type === 'local') {
       // artistAll dizisinin isLocal değeleri true olanları yakarlıyoruz ve id değerleri aralarına virgül ekleyerek birleştiriyoruz. 1,2,3,4,5,6,7 gibi
       const localArtistAll = artistAll.filter(item => item.isLocal).reduce((a, b) => (a.id || a) + ',' + b.id)
 
@@ -31,16 +33,23 @@ const Artist = () => {
         if (res.status) {
           dispatch(action.artist.setArtist(res.data.artists))
         }
+        else {
+          dispatch(action.site.setError(res.err))
+          navigate('/error');
+        }
       })
     }
     else if (type === 'foreign') {
-
       // artistAll dizisinin isLocal değeleri false olanları yakarlıyoruz ve id değerleri aralarına virgül ekleyerek birleştiriyoruz. 1,2,3,4,5,6,7 gibi
       const foreignArtistAll = artistAll.filter(item => !item.isLocal).reduce((a, b) => (a.id || a) + ',' + b.id)
 
       fetchFromURL(`artists?ids=${foreignArtistAll}`).then(res => {
         if (res.status) {
           dispatch(action.artist.setArtist(res.data.artists))
+        }
+        else {
+          dispatch(action.site.setError(res.err))
+          navigate('/error');
         }
       })
     }

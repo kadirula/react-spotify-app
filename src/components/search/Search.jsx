@@ -32,10 +32,9 @@ const Search = () => {
 
             }
             else {
-                if (res.statusCode === 401) {
-                    localStorage.removeItem('access-token')
-                    navigate('/login')
-                }
+                setSearchText('')
+                dispatch(action.site.setError(res.err))
+                navigate('/error');
             }
         })
     }

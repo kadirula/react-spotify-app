@@ -3,15 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 export const siteReducer = createSlice({
     name: 'site',
     initialState:{
-        loading: false
+        loading: false,
+        error: null
     },
     reducers:{
         setLoading: (state, action) => {
             state.loading = action.payload
+        },
+        setError: (state, action) => {
+            state.error = action.payload
         }
     }
 })
 
-export const { setLoading } = siteReducer.actions;
+export const { setLoading, setError } = siteReducer.actions;
 
 export default siteReducer.reducer;

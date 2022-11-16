@@ -26,26 +26,26 @@ const Search = () => {
                     </div>
                     :
                     <>
-                        <div className="search-section search-section--search">
+                        <div className="section section--search">
                             <SearchComponent />
                         </div>
 
-                        <div className="search-section">
-                            <h2 className="search-section__title">
+                        <div className="section">
+                            <h2 className="section__title">
                                 Sanatçılar
                             </h2>
                             <SearchArtistSection />
                         </div>
 
-                        <div className="search-section">
-                            <h2 className="search-section__title">
+                        <div className="section">
+                            <h2 className="section__title">
                                 Albümler
                             </h2>
                             <SearchAlbumSection />
                         </div>
 
-                        <div className="search-section">
-                            <h2 className="search-section__title">
+                        <div className="section">
+                            <h2 className="section__title">
                                 Çalma Listeleri
                             </h2>
                             <SearchPlaylistSection />

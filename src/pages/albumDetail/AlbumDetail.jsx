@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { fetchFromURL } from '../../api/spotify';
-import { setAlbumDetail } from '../../redux/reducers/albumReducer';
+import { action } from '../../redux/actions';
 
 import SpotifyPlayer from 'react-spotify-player';
 import { Loading } from '../../components';
@@ -26,14 +26,11 @@ const AlbumDetail = () => {
 
         fetchFromURL(`albums/${id}`).then(res => {
             if (res.status) {
-                console.log(res);
-                dispatch(setAlbumDetail(res.data))
+                dispatch(action.album.setAlbumDetail(res.data))
             }
             else {
-                if (res.statusCode === 401) {
-                    localStorage.removeItem('access-token')
-                    navigate('/login')
-                }
+                dispatch(action.site.setError(res.err))
+                navigate('/error');
             }
         })
     }, [id])

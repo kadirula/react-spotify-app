@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { fetchFromURL } from '../../api/spotify';
-import { setPlaylistDetail } from '../../redux/reducers/playlistReducer';
+import { action } from '../../redux/actions';
 
 import SpotifyPlayer from 'react-spotify-player';
 import { Loading } from '../../components';
@@ -27,13 +27,11 @@ const PlaylistDetail = () => {
 
         fetchFromURL(`playlists/${id}`).then(res => {
             if (res.status) {
-                dispatch(setPlaylistDetail(res.data))
+                dispatch(action.playlist.setPlaylistDetail(res.data))
             }
             else {
-                if (res.statusCode === 401) {
-                    localStorage.removeItem('access-token')
-                    navigate('/login')
-                }
+                dispatch(action.site.setError(res.err))
+                navigate('/error');
             }
         })
     }, [id])

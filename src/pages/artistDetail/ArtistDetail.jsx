@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import { fetchFromURL } from '../../api/spotify';
-import { setArtistDetail } from '../../redux/reducers/artistReducer';
+import { action } from '../../redux/actions';
 
 import SpotifyPlayer from 'react-spotify-player';
 import { Loading } from '../../components';
@@ -26,13 +26,11 @@ const ArtistDetail = () => {
 
         fetchFromURL(`artists/${id}`).then(res => {
             if (res.status) {
-                dispatch(setArtistDetail(res.data))
+                dispatch(action.artist.setArtistDetail(res.data))
             }
             else {
-                if (res.statusCode === 401) {
-                    localStorage.removeItem('access-token')
-                    navigate('/login')
-                }
+                dispatch(action.site.setError(res.err))
+                navigate('/error');
             }
         })
     }, [id])

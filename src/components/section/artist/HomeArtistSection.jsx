@@ -9,9 +9,11 @@ import { SwiperSlider, ArtistCard } from '../../index';
 
 /* Swiper  */
 import { SwiperSlide } from 'swiper/react';
+import { useNavigate } from 'react-router-dom';
 
 const HomeArtistSection = () => {
 
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const { homeArtists } = useSelector(state => state.artist);
@@ -26,7 +28,8 @@ const HomeArtistSection = () => {
                     dispatch(action.artist.setHomeArtist(res.data.artists))
                 }
                 else {
-                    // TO DO hata mesajı gösterilecek
+                    dispatch(action.site.setError(res.err))
+                    navigate('/error');
                 }
             })
         }

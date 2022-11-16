@@ -5,9 +5,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { albumsAll } from '../../api/data/albums';
 import { action } from '../../redux/actions';
+import { useNavigate } from 'react-router-dom';
 
 const Album = () => {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(true);
@@ -26,7 +28,8 @@ const Album = () => {
           dispatch(action.album.setHomeAlbum(res.data.albums))
         }
         else {
-          // TO DO hata mesajı gösterilecek
+          dispatch(action.site.setError(res.err))
+          navigate('/error');
         }
       })
     }
