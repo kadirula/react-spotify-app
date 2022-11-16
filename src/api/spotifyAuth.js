@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
-const redirectUri = 'http://localhost:3000';
+const redirectUri = 'https://spotify-api-v1.netlify.app/error';
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
 
