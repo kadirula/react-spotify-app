@@ -1,22 +1,18 @@
 import './home.scss'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { HomeArtistSection, HomeAlbumSection, Loading, Search } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
-import { action } from '../../redux/actions';
 
 
 const Home = () => {
-
-  const dispatch = useDispatch();
-
-  const { loading } = useSelector(state => state.site);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(action.site.setLoading(false))
+      setLoading(false)
     }, 2000);
 
-  }, [loading])
+  }, [])
 
   return (
     <>
